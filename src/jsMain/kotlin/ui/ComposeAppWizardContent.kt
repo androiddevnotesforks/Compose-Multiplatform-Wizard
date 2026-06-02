@@ -297,11 +297,17 @@ internal fun Set<DependencyBox>.getSelectedDependencies(): Set<Dependency> {
                 Sketch -> listOf(Sketch, SketchHttp)
                 Decompose -> listOf(Decompose, DecomposeCompose)
                 ApolloPlugin -> listOf(ApolloPlugin, ApolloRuntime)
-                AndroidxLifecycleViewmodel ->
+                AndroidxLifecycleViewmodel -> {
                     if (selectedDeps.contains(AndroidxNavigation3))
-                        listOf(AndroidxLifecycleViewmodel, AndroidxLifecycleRuntime, AndroidxLifecycleViewmodelNavigation3)
+                        listOf(
+                            AndroidxLifecycleViewmodel,
+                            AndroidxLifecycleRuntime,
+                            AndroidxLifecycleViewmodelNavigation3
+                        )
                     else
                         listOf(AndroidxLifecycleViewmodel, AndroidxLifecycleRuntime)
+                }
+                AndroidxNavigation3 -> listOf(AndroidxNavigation3, Navigation3Browser)
                 KotlinxCoroutinesCore -> listOf(
                     KotlinxCoroutinesCore,
                     KotlinxCoroutinesAndroid,

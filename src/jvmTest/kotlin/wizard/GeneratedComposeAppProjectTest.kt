@@ -25,6 +25,7 @@ internal val extraDependencies = setOf(
     AndroidxLifecycleRuntime,
     AndroidxLifecycleViewmodel,
     AndroidxLifecycleViewmodelNavigation3,
+    Navigation3Browser,
     Coil,
     CoilNetwork,
     Sketch,

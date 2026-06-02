@@ -2,6 +2,7 @@ package wizard.dependencies
 
 import wizard.Dependency
 import wizard.GradleModule
+import wizard.ProjectPlatform
 import wizard.ProjectPlatform.*
 
 val KotlinMultiplatformPlugin = Dependency(
@@ -142,4 +143,16 @@ val AndroidxNavigation3 = Dependency(
     catalogVersionName = "androidx-nav3",
     catalogName = "compose-nav3",
     platforms = emptySet()
+)
+
+val Navigation3Browser = Dependency(
+    title = "Navigation3 Browser",
+    description = "Browser support for Navigation 3.",
+    url = "https://github.com/terrakok/navigation3-browser",
+    group = "com.github.terrakok",
+    id = "navigation3-browser",
+    version = "1.1.0",
+    catalogVersionName = "nav3-browser",
+    catalogName = "nav3-browser",
+    platforms = setOf(Js, Wasm)
 )

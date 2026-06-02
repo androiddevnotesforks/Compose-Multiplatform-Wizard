@@ -48,6 +48,7 @@ kotlin {
             implementation(libs.compose.nav3)
             implementation(libs.androidx.lifecycle.runtime)
             implementation(libs.androidx.lifecycle.viewmodel)
+            implementation(libs.androidx.lifecycle.viewmodel.navigation3)
             implementation(libs.coil)
             implementation(libs.coil.network.ktor)
             implementation(libs.sketch)
@@ -82,6 +83,10 @@ kotlin {
             implementation(compose.desktop.currentOs)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqlDelight.driver.sqlite)
+        }
+
+        webMain.dependencies {
+            implementation(libs.nav3.browser)
         }
 
         iosMain.dependencies {
