@@ -14,6 +14,7 @@ import web.cssom.*
 import web.html.HTMLInputElement
 import web.window.window
 import wizard.DefaultComposeAppInfo
+import wizard.Dependency
 import wizard.ProjectPlatform
 import wizard.ProjectPlatform.*
 import wizard.dependencies.*
@@ -233,12 +234,15 @@ val ComposeAppWizardContent = FC<AppProps> { props ->
 private fun getActualPlatforms(platforms: Set<ProjectPlatform>): Set<ProjectPlatform> =
     if (platforms.contains(Wasm)) platforms + Js else platforms
 
-internal fun Set<DependencyBox>.getSelectedDependencies() =
-    this
+internal fun Set<DependencyBox>.getSelectedDependencies(): Set<Dependency> {
+    val selectedDeps = this
         .filter { it.isSelected.component1() }
         .map { it.selectedDep.component1() }
-        .flatMap {
-            when (it) {
+        .toSet()
+
+    return selectedDeps
+        .flatMap { dep ->
+            when (dep) {
                 ComposeMultiplatformPlugin -> listOf(
                     ComposeMultiplatformPlugin,
                     ComposeCompilerPlugin,
@@ -293,7 +297,11 @@ internal fun Set<DependencyBox>.getSelectedDependencies() =
                 Sketch -> listOf(Sketch, SketchHttp)
                 Decompose -> listOf(Decompose, DecomposeCompose)
                 ApolloPlugin -> listOf(ApolloPlugin, ApolloRuntime)
-                AndroidxLifecycleViewmodel -> listOf(AndroidxLifecycleViewmodel, AndroidxLifecycleRuntime)
+                AndroidxLifecycleViewmodel ->
+                    if (selectedDeps.contains(AndroidxNavigation3))
+                        listOf(AndroidxLifecycleViewmodel, AndroidxLifecycleRuntime, AndroidxLifecycleViewmodelNavigation3)
+                    else
+                        listOf(AndroidxLifecycleViewmodel, AndroidxLifecycleRuntime)
                 KotlinxCoroutinesCore -> listOf(
                     KotlinxCoroutinesCore,
                     KotlinxCoroutinesAndroid,
@@ -302,7 +310,8 @@ internal fun Set<DependencyBox>.getSelectedDependencies() =
                 )
 
                 KotlinxSerializationJson -> listOf(KotlinxSerializationPlugin, KotlinxSerializationJson)
-                else -> listOf(it)
+                else -> listOf(dep)
             }
         }
         .toSet()
+}

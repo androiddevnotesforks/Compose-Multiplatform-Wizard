@@ -111,6 +111,15 @@ val AndroidxLifecycleViewmodel = AndroidxLifecycleRuntime.copy(
     platforms = emptySet()
 )
 
+val AndroidxLifecycleViewmodelNavigation3 = AndroidxLifecycleRuntime.copy(
+    title = "Androidx ViewModel Navigation3",
+    description = "ViewModel integration for Navigation 3.",
+    url = "https://developer.android.com/topic/libraries/architecture/viewmodel",
+    id = "lifecycle-viewmodel-navigation3",
+    catalogName = "androidx-lifecycle-viewmodel-navigation3",
+    platforms = emptySet()
+)
+
 val AndroidxNavigation = Dependency(
     title = "Androidx Navigation",
     description = "Navigation is a framework for navigating between 'destinations' within an Compose multiplatform application",
