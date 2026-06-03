@@ -207,7 +207,7 @@ class GeneratedKmpLibraryProjectTest {
             command = listOf("${dir.path}/gradlew", "publishAllPublicationsToCustomRepository")
         )
 
-        val konanAbiVersion = "2.3.0"
+        val konanAbiVersion = "2.4.0"
         val metadata = dir.resolve("${projectInfo.moduleName}/repo/my/company/name/shared/1.0.0/shared-1.0.0-kotlin-tooling-metadata.json").readText()
         assertEquals(
             """
