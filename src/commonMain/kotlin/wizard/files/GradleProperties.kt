@@ -19,7 +19,6 @@ class GradleProperties(info: ProjectInfo) : ProjectFile {
             #Kotlin
             kotlin.daemon.jvmargs=-Xmx4G
             kotlin.native.binary.gc=cms
-            kotlin.incremental.wasm=true
 
             #Android
             android.useAndroidX=true
